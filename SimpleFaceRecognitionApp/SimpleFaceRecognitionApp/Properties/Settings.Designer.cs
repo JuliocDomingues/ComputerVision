@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FaceRecognition.Properties
+namespace SimpleFaceRecognitionApp.Properties
 {
 
 

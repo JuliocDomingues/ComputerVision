@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FaceRecognition")]
+[assembly: AssemblyTitle("SimpleFaceRecognitionApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FaceRecognition")]
+[assembly: AssemblyProduct("SimpleFaceRecognitionApp")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("938f926b-02dc-4117-a86a-dfccdcca0188")]
+[assembly: Guid("4cb8a7c3-7b78-44d4-b7fa-5304afb9931e")]
 
 // Version information for an assembly consists of the following four values:
 //
