@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "nYsli9Rv/J3jUlTWz7Jw4sIzavGgAt71xhNm4S0vXeUoZqPc+/SfdzpZjue6pYsc9V6GiI/1FCgc8mR+BjDplg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\estagio.sst17\\Documents\\studycsharp\\ComputerVision\\Solution1\\Chapter4\\DrawingShapes\\DrawingShapes.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\microsoft.win32.systemevents\\4.5.0\\microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\opencvsharp3-anycpu\\4.0.0.20181129\\opencvsharp3-anycpu.4.0.0.20181129.nupkg.sha512",
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\opencvsharp4\\4.5.5.20211231\\opencvsharp4.4.5.5.20211231.nupkg.sha512",
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\system.drawing.common\\4.5.0\\system.drawing.common.4.5.0.nupkg.sha512",
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\estagio.sst17\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

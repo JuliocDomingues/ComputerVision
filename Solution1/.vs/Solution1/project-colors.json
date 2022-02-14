@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d24a88da-96f3-48f1-8d58-f4aa87db8bed": {
+      "ProjectGuid": "d24a88da-96f3-48f1-8d58-f4aa87db8bed",
+      "DisplayName": "LoadDisplaySave",
+      "ColorIndex": 0
+    },
+    "e646d651-bdbc-4220-a3a2-d0b750b77dba": {
+      "ProjectGuid": "e646d651-bdbc-4220-a3a2-d0b750b77dba",
+      "DisplayName": "MatObjectTutorial",
+      "ColorIndex": 1
+    },
+    "91752ecd-f087-4287-9b86-201b66448f57": {
+      "ProjectGuid": "91752ecd-f087-4287-9b86-201b66448f57",
+      "DisplayName": "DrawingShapes",
+      "ColorIndex": 2
+    },
+    "c976ddb9-aed9-464e-9165-82a8fa8a4209": {
+      "ProjectGuid": "c976ddb9-aed9-464e-9165-82a8fa8a4209",
+      "DisplayName": "FirstImageProcessingSteps",
+      "ColorIndex": 3
+    },
+    "1f3b95c4-5d11-4b25-957a-e0f51836a9ea": {
+      "ProjectGuid": "1f3b95c4-5d11-4b25-957a-e0f51836a9ea",
+      "DisplayName": "ThresholdingDemo",
+      "ColorIndex": 4
+    },
+    "403bed8b-9e64-49ee-85eb-2b381dd5bba5": {
+      "ProjectGuid": "403bed8b-9e64-49ee-85eb-2b381dd5bba5",
+      "DisplayName": "HistogramDemo",
+      "ColorIndex": 5
+    },
+    "5dbd6e4c-6325-428d-9340-fd0d5be9d91b": {
+      "ProjectGuid": "5dbd6e4c-6325-428d-9340-fd0d5be9d91b",
+      "DisplayName": "HistogramExercise",
+      "ColorIndex": 6
+    },
+    "9745a0d9-61e5-4014-9cf0-bf6628fbee81": {
+      "ProjectGuid": "9745a0d9-61e5-4014-9cf0-bf6628fbee81",
+      "DisplayName": "FilteringImages",
+      "ColorIndex": 7
+    },
+    "8d632d79-8649-4e66-8206-1049d7b681e0": {
+      "ProjectGuid": "8d632d79-8649-4e66-8206-1049d7b681e0",
+      "DisplayName": "EdgeDetection",
+      "ColorIndex": 8
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "862b63c5-9617-4c7b-a78a-533a80caf765": {
+      "ProjectGuid": "862b63c5-9617-4c7b-a78a-533a80caf765",
+      "DisplayName": "ContourDetection",
+      "ColorIndex": 9
+    },
+    "b2308799-8814-4aea-8ac2-3c3d0a825ff8": {
+      "ProjectGuid": "b2308799-8814-4aea-8ac2-3c3d0a825ff8",
+      "DisplayName": "ShapeMatching",
+      "ColorIndex": 10
+    },
+    "0c4d7f3a-d190-4ab5-891e-b847880e4817": {
+      "ProjectGuid": "0c4d7f3a-d190-4ab5-891e-b847880e4817",
+      "DisplayName": "MissingPizza",
+      "ColorIndex": 11
+    },
+    "967de26a-22fb-4825-b55f-16a9856d941d": {
+      "ProjectGuid": "967de26a-22fb-4825-b55f-16a9856d941d",
+      "DisplayName": "MorphologicalOperations",
+      "ColorIndex": 12
+    },
+    "dc855ed5-b121-44e4-aed8-500a97f1c94e": {
+      "ProjectGuid": "dc855ed5-b121-44e4-aed8-500a97f1c94e",
+      "DisplayName": "ColorSpaceTracking",
+      "ColorIndex": 13
+    },
+    "8297dedd-59e2-447e-bf8b-a2425d4d5cb8": {
+      "ProjectGuid": "8297dedd-59e2-447e-bf8b-a2425d4d5cb8",
+      "DisplayName": "BarcodeDotNet",
+      "ColorIndex": 14
+    },
+    "7895995c-c9a5-438e-8948-4a1f1756cdf9": {
+      "ProjectGuid": "7895995c-c9a5-438e-8948-4a1f1756cdf9",
+      "DisplayName": "BarcodeDotnet2",
+      "ColorIndex": 15
+    },
+    "aff1c2c2-3433-45ad-82f6-3eee2fb7ea2f": {
+      "ProjectGuid": "aff1c2c2-3433-45ad-82f6-3eee2fb7ea2f",
+      "DisplayName": "BarcodeDotnet",
+      "ColorIndex": 0
+    },
+    "5f8cacd6-c667-4219-93dd-41863840bd28": {
+      "ProjectGuid": "5f8cacd6-c667-4219-93dd-41863840bd28",
+      "DisplayName": "ChapterA3",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
