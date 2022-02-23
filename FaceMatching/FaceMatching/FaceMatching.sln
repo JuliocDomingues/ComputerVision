@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceMatching", "FaceMatching\FaceMatching.csproj", "{4AC36667-6F55-4821-AB1B-6ED0B264985B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Debug|x64.ActiveCfg = Debug|x64
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Debug|x64.Build.0 = Debug|x64
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Release|x64.ActiveCfg = Release|x64
+		{4AC36667-6F55-4821-AB1B-6ED0B264985B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AE13E69-3032-454D-8A19-218C873A4CE1}
+	EndGlobalSection
+EndGlobal
