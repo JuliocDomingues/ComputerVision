@@ -50,7 +50,7 @@ namespace FaceMatching
 
             if (recognizeBtn)
             {
-                Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
+                Services.MatchFaces.MatchFace(image);
                 Console.WriteLine("********************************************************");
                 recognizeBtn = false;
             }

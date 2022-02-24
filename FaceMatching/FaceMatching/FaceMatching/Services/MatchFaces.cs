@@ -17,8 +17,9 @@ namespace FaceMatching.Services
         public static bool MatchFace(Bitmap image)
         {
             string[] folders = Directory.GetDirectories(path, "*", SearchOption.AllDirectories);
+
             var imageBit = FaceRecognition.LoadImage(image);
-            var encodingImage = _FaceRecognition.FaceEncodings(imageBit).ToArray();
+            var encodingImage = _FaceRecognition.FaceEncodings(imageBit, model: Model.Cnn).ToArray();
 
             foreach (string folder in folders)
             {
@@ -49,7 +50,7 @@ namespace FaceMatching.Services
                         {
                             //string res = "False" + cont.ToString();
                             //Cv2.ImShow(res, Helpers.ConvertersHelper.BitmapToMat(img.ToBitmap()));
-                            Console.WriteLine("Result: False, IMG: {0}", file);
+                            Console.WriteLine("Result: False, Name: Unknown, IMG: {0}", file);
                         }
                         //cont++;
                     }
