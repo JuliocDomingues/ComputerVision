@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using OpenCvSharp;
 
@@ -10,6 +11,7 @@ namespace FaceMatching
         private VideoCapture _videoCapture;
         private Mat imageMat = new Mat();
         private bool saveBtn = false;
+        private bool recognizeBtn = false;
         #endregion
 
         public Form1()
@@ -28,20 +30,33 @@ namespace FaceMatching
         {
             saveBtn = true;
         }
+        private void btnRecognize_Click(object sender, EventArgs e)
+        {
+            recognizeBtn = true;
+        }
 
         private void ProcessFrame(Object sender, EventArgs e)
         {
             imageMat = _videoCapture.RetrieveMat();
 
-            picFace.Image = Services.FaceDetect.DetectFaces(imageMat);
-
-            picSmallFace.Image = Services.FaceDetect.SmallImage;
+            Bitmap image = Services.FaceDetect.DetectFaces(imageMat);
 
             if (saveBtn)
             {
                 Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, txtName.Text);
                 saveBtn = false;
+                
             }
+
+            if (recognizeBtn)
+            {
+                Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
+                Console.WriteLine("********************************************************");
+                recognizeBtn = false;
+            }
+
+            picFace.Image = image;
+            picSmallFace.Image = Services.FaceDetect.SmallImage;
 
         }
 

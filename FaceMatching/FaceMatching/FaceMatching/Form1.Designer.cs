@@ -83,6 +83,7 @@
             this.btnRecognize.TabIndex = 4;
             this.btnRecognize.Text = "Recognize";
             this.btnRecognize.UseVisualStyleBackColor = true;
+            this.btnRecognize.Click += new System.EventHandler(this.btnRecognize_Click);
             // 
             // txtName
             // 
