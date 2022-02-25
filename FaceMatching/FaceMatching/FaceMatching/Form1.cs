@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using FaceRecognitionDotNet;
 using OpenCvSharp;
 
 namespace FaceMatching
@@ -14,8 +16,21 @@ namespace FaceMatching
         private bool recognizeBtn = false;
         #endregion
 
+        #region Getters/Setters
+        public static FaceRecognition _FaceRecognition { get; private set; } = FaceRecognition.Create(Path.GetFullPath("models"));
+        public static string path { get; private set; } = Directory.GetCurrentDirectory() + @"\SavedImages";
+
+        public static string pathEncoding { get; private set; } = Directory.GetCurrentDirectory() + @"\Encodings";
+        #endregion
+
         public Form1()
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            if (!Directory.Exists(pathEncoding))
+                Directory.CreateDirectory(pathEncoding);
+
             InitializeComponent();
         }
 
@@ -50,7 +65,7 @@ namespace FaceMatching
 
             if (recognizeBtn)
             {
-                Services.MatchFaces.MatchFace(image);
+                Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
                 Console.WriteLine("********************************************************");
                 recognizeBtn = false;
             }

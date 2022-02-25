@@ -1,36 +1,33 @@
-﻿using FaceRecognitionDotNet;
-using OpenCvSharp;
+﻿using DlibDotNet;
+using FaceRecognitionDotNet;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FaceMatching.Services
 {
     public class MatchFaces
     {
-        #region Variables
-        private static readonly FaceRecognition _FaceRecognition = FaceRecognition.Create(Path.GetFullPath("models"));
-        private static string path = Directory.GetCurrentDirectory() + @"\SavedImages";
-        #endregion
         public static bool MatchFace(Bitmap image)
         {
-            string[] folders = Directory.GetDirectories(path, "*", SearchOption.AllDirectories);
+            string[] folders = Directory.GetDirectories(Form1.pathEncoding, "*", SearchOption.AllDirectories);
 
             var imageBit = FaceRecognition.LoadImage(image);
-            var encodingImage = _FaceRecognition.FaceEncodings(imageBit, model: Model.Cnn).ToArray();
+            var encodingImage = Form1._FaceRecognition.FaceEncodings(imageBit, model: Model.Cnn).ToArray();
+
+            var bf = new BinaryFormatter();
 
             foreach (string folder in folders)
             {
                 string[] files = Directory.GetFiles(folder, "*");
-                //int cont = 0;
 
                 foreach (string file in files)
                 {
-                    using (var img = FaceRecognition.LoadImageFile(file))
+                    using (FileStream stream = new FileStream(file, FileMode.Open))
                     {
-                        var facesEncodings = _FaceRecognition.FaceEncodings(img).ToArray();
+                        var facesEncodings = (System.Collections.Generic.IEnumerable<FaceEncoding>)bf.Deserialize(stream);
                         bool flag = false;
 
                         foreach (var encoding in facesEncodings)
@@ -38,20 +35,18 @@ namespace FaceMatching.Services
                             {
                                 var pathName = file.Split('_');
                                 var name = pathName[0].ToString().Split('\\').Last();
-                                Console.WriteLine("Result: {0}, Name: {1}, IMG: {2}", compareFace, name, file);
 
-                                //string res = "True" + cont.ToString();
+                                if (compareFace)
+                                    Console.WriteLine("Result: {0}, Name: {1}, IMG: {2}", compareFace, name, file);
+                                else
+                                    Console.WriteLine("Result: {0}, Name: Unknown, IMG: {1}", compareFace, file);
+
                                 flag = true;
-                                //Cv2.ImShow(res, Helpers.ConvertersHelper.BitmapToMat(img.ToBitmap()));
-
                             }
 
                         if (!flag)
-                        {
-                            //string res = "False" + cont.ToString();
-                            //Cv2.ImShow(res, Helpers.ConvertersHelper.BitmapToMat(img.ToBitmap()));
                             Console.WriteLine("Result: False, Name: Unknown, IMG: {0}", file);
-                        }
+
                         //cont++;
                     }
                 }

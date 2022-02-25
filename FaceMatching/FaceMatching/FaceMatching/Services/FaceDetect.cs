@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using FaceRecognitionDotNet;
 using OpenCvSharp;
@@ -10,7 +9,6 @@ namespace FaceMatching.Services
     public class FaceDetect
     {
         #region Variables
-        private static readonly FaceRecognition _faceRecognition = FaceRecognition.Create(Path.GetFullPath("models"));
         private static string modelPath = @".\models\";
         #endregion
 
@@ -30,7 +28,7 @@ namespace FaceMatching.Services
 
             using (var faceRecimage = FaceRecognition.LoadImage(bitmapImage))
             {
-                var faceLocations = _faceRecognition.FaceLocations(faceRecimage, 0, model).ToArray();
+                var faceLocations = Form1._FaceRecognition.FaceLocations(faceRecimage, 0, model).ToArray();
 
                 //var faces = FaceRecognition.CropFaces(faceRecimage, faceLocations);
 

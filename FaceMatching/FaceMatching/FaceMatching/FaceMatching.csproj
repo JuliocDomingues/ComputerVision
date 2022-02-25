@@ -118,6 +118,7 @@
     <Compile Include="Helpers\ImageManipulation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EncodingImages.cs" />
     <Compile Include="Services\FaceDetect.cs" />
     <Compile Include="Services\MatchFaces.cs" />
     <Compile Include="Services\SaveImages.cs" />
