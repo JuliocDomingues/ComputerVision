@@ -31,6 +31,8 @@ namespace FaceMatching
             if (!Directory.Exists(pathEncoding))
                 Directory.CreateDirectory(pathEncoding);
 
+            //Image_UltraFace.DataContext = algorithmsViewModels[Model.AlogrithmType.UltraFace];
+
             InitializeComponent();
         }
 
@@ -60,7 +62,6 @@ namespace FaceMatching
             {
                 Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, txtName.Text);
                 saveBtn = false;
-                
             }
 
             if (recognizeBtn)
@@ -72,7 +73,6 @@ namespace FaceMatching
 
             picFace.Image = image;
             picSmallFace.Image = Services.FaceDetect.SmallImage;
-
         }
 
         private void picSmallFace_Click(object sender, EventArgs e)

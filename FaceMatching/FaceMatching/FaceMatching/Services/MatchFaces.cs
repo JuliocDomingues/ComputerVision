@@ -46,8 +46,6 @@ namespace FaceMatching.Services
 
                         if (!flag)
                             Console.WriteLine("Result: False, Name: Unknown, IMG: {0}", file);
-
-                        //cont++;
                     }
                 }
             }
