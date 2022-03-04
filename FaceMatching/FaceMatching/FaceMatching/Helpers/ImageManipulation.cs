@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 
-
 namespace FaceMatching.Helpers
 {
     internal class ImageManipulation

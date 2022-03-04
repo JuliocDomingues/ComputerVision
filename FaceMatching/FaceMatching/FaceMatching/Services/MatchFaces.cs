@@ -1,5 +1,4 @@
-﻿using DlibDotNet;
-using FaceRecognitionDotNet;
+﻿using FaceRecognitionDotNet;
 using System;
 using System.Drawing;
 using System.IO;

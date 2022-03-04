@@ -14,6 +14,7 @@ namespace FaceMatching
         private Mat imageMat = new Mat();
         private bool saveBtn = false;
         private bool recognizeBtn = false;
+        private bool chooseBtn = false;
         #endregion
 
         #region Getters/Setters
@@ -52,32 +53,84 @@ namespace FaceMatching
             recognizeBtn = true;
         }
 
+        private void btnChoose_Click(object sender, EventArgs e)
+        {
+            chooseBtn = true;
+        }
+
         private void ProcessFrame(Object sender, EventArgs e)
         {
-            imageMat = _videoCapture.RetrieveMat();
-
-            Bitmap image = Services.FaceDetect.DetectFaces(imageMat);
-
-            if (saveBtn)
+            
+            if (chooseBtn)
             {
-                Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, txtName.Text);
-                saveBtn = false;
+                using (OpenFileDialog openFD = new OpenFileDialog())
+                {
+                    if(openFD.ShowDialog() == DialogResult.OK)
+                    {
+                        txtFileName.Text = Path.GetFileName(openFD.FileName);
+
+                        Bitmap img = Services.FaceDetect.DetectFaces(
+                            Helpers.ConvertersHelper.BitmapToMat(
+                            new Bitmap(openFD.FileName)));
+
+                        Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
+                        Console.WriteLine("********************************************************");
+                    }
+                }
+                chooseBtn = false;
             }
 
-            if (recognizeBtn)
+            else
             {
-                Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
-                Console.WriteLine("********************************************************");
-                recognizeBtn = false;
-            }
+                imageMat = _videoCapture.RetrieveMat();
 
-            picFace.Image = image;
-            picSmallFace.Image = Services.FaceDetect.SmallImage;
+                Bitmap image = Services.FaceDetect.DetectFaces(imageMat);
+
+                if (saveBtn)
+                {
+                    Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, txtName.Text);
+                    saveBtn = false;
+                }
+
+                if (recognizeBtn)
+                {
+                    Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
+                    Console.WriteLine("********************************************************");
+                    recognizeBtn = false;
+                }
+
+                picFace.Image = image;
+                picSmallFace.Image = Services.FaceDetect.SmallImage;
+            }
         }
 
         private void picSmallFace_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnSaveDir_Click(object sender, EventArgs e)
+        {
+
+            string[] images = Directory.GetFiles("C:\\Users\\estagio.sst17\\Pictures\\imgs", "*.jpg");
+
+           foreach (string image in images)
+           {
+                var img = new Bitmap(image);
+
+                var nameChoose = image.Split('\\', '_');
+
+                txtFileName.Text = nameChoose[5] + nameChoose[6];
+
+                Bitmap imageChoose = Services.FaceDetect.DetectFaces(
+                    Helpers.ConvertersHelper.BitmapToMat(img));
+
+                picFace.Image = imageChoose;
+                picSmallFace.Image = Services.FaceDetect.SmallImage;
+
+                Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, nameChoose[5]);
+           }         
+        }
+
     }
 }

@@ -57,13 +57,13 @@ namespace FaceMatching.Services
         #endregion
 
         #region UltraFace
-        private static UltraFaceParameter _param = new UltraFaceParameter()
+        private static readonly UltraFaceParameter _param = new UltraFaceParameter()
         {
             BinFilePath = Path.Combine("models", "RFB-320.bin"),
             ParamFilePath = Path.Combine("models", "RFB-320.param"),
             InputWidth = 320,
             InputLength = 240,
-            NumThread = 1,
+            NumThread = 4,
             ScoreThreshold = .7f
         };
 

@@ -34,6 +34,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnRecognize = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.btnChoose = new System.Windows.Forms.Button();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.btnSaveDir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSmallFace)).BeginInit();
             this.SuspendLayout();
@@ -92,11 +95,41 @@
             this.txtName.Size = new System.Drawing.Size(313, 22);
             this.txtName.TabIndex = 5;
             // 
+            // btnChoose
+            // 
+            this.btnChoose.Location = new System.Drawing.Point(1309, 439);
+            this.btnChoose.Name = "btnChoose";
+            this.btnChoose.Size = new System.Drawing.Size(313, 34);
+            this.btnChoose.TabIndex = 6;
+            this.btnChoose.Text = "Choose File";
+            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(1309, 479);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(313, 22);
+            this.txtFileName.TabIndex = 7;
+            // 
+            // btnSaveDir
+            // 
+            this.btnSaveDir.Location = new System.Drawing.Point(1309, 507);
+            this.btnSaveDir.Name = "btnSaveDir";
+            this.btnSaveDir.Size = new System.Drawing.Size(313, 34);
+            this.btnSaveDir.TabIndex = 8;
+            this.btnSaveDir.Text = "Save Images From Dir";
+            this.btnSaveDir.UseVisualStyleBackColor = true;
+            this.btnSaveDir.Click += new System.EventHandler(this.btnSaveDir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1651, 723);
+            this.Controls.Add(this.btnSaveDir);
+            this.Controls.Add(this.txtFileName);
+            this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnRecognize);
             this.Controls.Add(this.btnSave);
@@ -120,6 +153,9 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnRecognize;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnChoose;
+        private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.Button btnSaveDir;
     }
 }
 
