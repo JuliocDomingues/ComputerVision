@@ -37,6 +37,7 @@
             this.btnChoose = new System.Windows.Forms.Button();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.btnSaveDir = new System.Windows.Forms.Button();
+            this.btnExec = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSmallFace)).BeginInit();
             this.SuspendLayout();
@@ -122,11 +123,22 @@
             this.btnSaveDir.UseVisualStyleBackColor = true;
             this.btnSaveDir.Click += new System.EventHandler(this.btnSaveDir_Click);
             // 
+            // btnExec
+            // 
+            this.btnExec.Location = new System.Drawing.Point(1309, 677);
+            this.btnExec.Name = "btnExec";
+            this.btnExec.Size = new System.Drawing.Size(313, 34);
+            this.btnExec.TabIndex = 9;
+            this.btnExec.Text = "Execute Script";
+            this.btnExec.UseVisualStyleBackColor = true;
+            this.btnExec.Click += new System.EventHandler(this.btnExec_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1651, 723);
+            this.Controls.Add(this.btnExec);
             this.Controls.Add(this.btnSaveDir);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.btnChoose);
@@ -156,6 +168,7 @@
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txtFileName;
         private System.Windows.Forms.Button btnSaveDir;
+        private System.Windows.Forms.Button btnExec;
     }
 }
 

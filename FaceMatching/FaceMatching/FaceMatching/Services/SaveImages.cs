@@ -10,7 +10,7 @@ namespace FaceMatching.Services
         public static string nameIgm { get; private set; }
         #endregion
 
-        public static void SaveImage(Bitmap image, string name)
+        public static string SaveImage(Bitmap image, string name)
         {
             nameIgm = @"\" + name + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss");
 
@@ -19,7 +19,8 @@ namespace FaceMatching.Services
 
             image.Save(Form1.path + @"\" + name + nameIgm + ".jpg");
 
-            EncodingImages.EncodingImg(image, name);
+            return Form1.path + @"\" + name + nameIgm + ".jpg";
+            //EncodingImages.EncodingImg(image, name);
         }
     }
 }

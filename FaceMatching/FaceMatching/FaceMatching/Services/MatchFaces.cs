@@ -14,6 +14,8 @@ namespace FaceMatching.Services
         {
             string[] folders = Directory.GetDirectories(Form1.pathEncoding, "*", SearchOption.AllDirectories);
 
+            OpenCvSharp.Cv2.CvtColor(Helpers.ConvertersHelper.BitmapToMat(image), Helpers.ConvertersHelper.BitmapToMat(image), OpenCvSharp.ColorConversionCodes.RGB2GRAY);
+
             var imageBit = FaceRecognition.LoadImage(image);
 
             var encodingImage = Form1._FaceRecognition.FaceEncodings(imageBit, model: Model.Cnn).ToArray();
@@ -30,17 +32,17 @@ namespace FaceMatching.Services
                     {
                         var facesEncodings = (System.Collections.Generic.IEnumerable<FaceEncoding>)bf.Deserialize(stream);
 
-                        //Face distances
+                        //Cosine Similiarity
 
-                        Console.WriteLine("-----------------------Face Distances-----------------------");
+                        Console.WriteLine("-----------------------Cosine Distance-----------------------");
 
                         foreach (var encoding in facesEncodings)
-                            foreach(var compareFace in FaceRecognition.FaceDistances(encodingImage, encoding))
+                            foreach(var compareFace in Helpers.CosineSimiliarity.CalculateCosine(encodingImage, encoding))
                             {
                                 var pathName = file.Split('_');
                                 var name = pathName[0].ToString().Split('\\').Last();
 
-                                if (compareFace <= 0.55)
+                                if (compareFace <= 0.07)
                                     Console.WriteLine("Result: {0}, Name: {1}, IMG: {2}", compareFace, name, file);
                                 else
                                     Console.WriteLine("Result: {0}, Name: Unknown, IMG: {1}", compareFace, file);

@@ -10,7 +10,11 @@ namespace FaceMatching.Services
     {
         public static void EncodingImg(Bitmap image, string name)
         {
+
+            OpenCvSharp.Cv2.CvtColor(Helpers.ConvertersHelper.BitmapToMat(image), Helpers.ConvertersHelper.BitmapToMat(image), OpenCvSharp.ColorConversionCodes.RGB2GRAY);
+
             var imageBit = FaceRecognition.LoadImage(image);
+
             var encodingImage = Form1._FaceRecognition.FaceEncodings(imageBit, model: Model.Cnn).ToArray();
 
             var dest = $"{Form1.pathEncoding + @"\" + name + SaveImages.nameIgm}.dat";

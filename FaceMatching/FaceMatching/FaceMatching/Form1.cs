@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using FaceRecognitionDotNet;
 using OpenCvSharp;
@@ -15,11 +16,12 @@ namespace FaceMatching
         private bool saveBtn = false;
         private bool recognizeBtn = false;
         private bool chooseBtn = false;
+        private bool exeBtn = false;
         #endregion
 
         #region Getters/Setters
         public static FaceRecognition _FaceRecognition { get; private set; } = FaceRecognition.Create(Path.GetFullPath("models"));
-        public static string path { get; private set; } = Directory.GetCurrentDirectory() + @"\SavedImages";
+        public static string path { get; private set; } = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\tmpImages";
 
         public static string pathEncoding { get; private set; } = Directory.GetCurrentDirectory() + @"\Encodings";
         #endregion
@@ -60,7 +62,7 @@ namespace FaceMatching
 
         private void ProcessFrame(Object sender, EventArgs e)
         {
-            
+
             if (chooseBtn)
             {
                 using (OpenFileDialog openFD = new OpenFileDialog())
@@ -69,12 +71,16 @@ namespace FaceMatching
                     {
                         txtFileName.Text = Path.GetFileName(openFD.FileName);
 
+                        Cv2.ImShow("img", Helpers.ConvertersHelper.BitmapToMat(
+                            new Bitmap(openFD.FileName)));
+
                         Bitmap img = Services.FaceDetect.DetectFaces(
                             Helpers.ConvertersHelper.BitmapToMat(
                             new Bitmap(openFD.FileName)));
 
                         Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
                         Console.WriteLine("********************************************************");
+
                     }
                 }
                 chooseBtn = false;
@@ -99,9 +105,30 @@ namespace FaceMatching
                     recognizeBtn = false;
                 }
 
+                if (btnExec.Enabled == true && Services.FaceDetect.SmallImage != null)
+                {
+                    btnExec.PerformClick();
+                }
+
                 picFace.Image = image;
                 picSmallFace.Image = Services.FaceDetect.SmallImage;
             }
+
+        }
+
+        private async void btnExec_Click(object sender, EventArgs e)
+        {
+            this.btnExec.Enabled = false;
+
+            string pathImage = Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, "Unknown");
+
+            var task = Task.Factory.StartNew(() =>
+                Services.CallScript.RunScript(pathImage));
+           
+            await task;
+
+            this.btnExec.Enabled = true; 
+            Console.WriteLine(task.Result);
         }
 
         private void picSmallFace_Click(object sender, EventArgs e)
@@ -131,6 +158,5 @@ namespace FaceMatching
                 Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, nameChoose[5]);
            }         
         }
-
     }
 }

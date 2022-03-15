@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -68,19 +69,21 @@ namespace FaceMatching.Services
         };
 
         public static Bitmap DetectFaces(Mat image)
-        {
+        {     
             using (var ultraFace = UltraFace.Create(_param))
             {
                 using (var inMat = NcnnDotNet.Mat.FromPixels(image.Data, NcnnDotNet.PixelType.Bgr2Rgb, image.Cols, image.Rows))
                 {
                     var faceInfos = ultraFace.Detect(inMat).ToArray();
 
-                    foreach(var face in faceInfos)
+                    if (faceInfos.Length == 0)
+                        SmallImage = null;
+
+                    foreach (var face in faceInfos)
                     {
                         SmallImage = Helpers.ImageManipulation.ResizeBitmap(
-                            Helpers.ImageManipulation.CropBitmap(image.ToBitmap(), new Rectangle((int)face.X1, (int)face.Y1, (int)face.X2 - (int)face.X1, (int)face.Y2 - (int)face.Y1)),
-                            250, 250);
-
+                                Helpers.ImageManipulation.CropBitmap(image.ToBitmap(), new Rectangle((int)face.X1, (int)face.Y1, (int)face.X2 - (int)face.X1 , (int)face.Y2 - (int)face.Y1)),
+                                250, 250);
                         image.Rectangle(new Rect((int)face.X1, (int)face.Y1, (int)face.X2 - (int)face.X1, (int)face.Y2 - (int)face.Y1), Scalar.Red);
                     }
                 }
