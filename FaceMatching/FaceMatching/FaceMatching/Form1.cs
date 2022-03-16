@@ -12,8 +12,8 @@ namespace FaceMatching
     {
 
         #region Paths
-        private string pathScriptEncoding = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Script\EncodingFromDir.py";
-        private string pathScriptVerify = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Script\VerifyDistances.py";
+        private string pathScriptEncoding = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Scripts\EncodingFromDir.py";
+        private string pathScriptVerify = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Scripts\VerifyDistances.py";
         #endregion
 
         #region Variables
@@ -32,6 +32,7 @@ namespace FaceMatching
         public static string pathEncoding { get; private set; } = Directory.GetCurrentDirectory() + @"\Encodings";
         #endregion
 
+        #region Constructor
         public Form1()
         {
             if (!Directory.Exists(path))
@@ -44,11 +45,13 @@ namespace FaceMatching
 
             InitializeComponent();
         }
+        #endregion
 
+        #region Buttons
         private void btnCapture_Click(object sender, EventArgs e)
         {
             _videoCapture = new VideoCapture(0);
-            
+
             Application.Idle += ProcessFrame;
         }
 
@@ -66,6 +69,31 @@ namespace FaceMatching
             chooseBtn = true;
         }
 
+        private void btnSaveDir_Click(object sender, EventArgs e)
+        {
+
+            string[] images = Directory.GetFiles("C:\\Users\\estagio.sst17\\Pictures\\imgs", "*.jpg");
+
+            foreach (string image in images)
+            {
+                var img = new Bitmap(image);
+
+                var nameChoose = image.Split('\\', '_');
+
+                txtFileName.Text = nameChoose[5] + nameChoose[6];
+
+                Bitmap imageChoose = Services.FaceDetect.DetectFaces(
+                    Helpers.ConvertersHelper.BitmapToMat(img));
+
+                picFace.Image = imageChoose;
+                picSmallFace.Image = Services.FaceDetect.SmallImage;
+
+                Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, nameChoose[5]);
+            }
+        }
+        #endregion
+
+        #region Process Frame
         private void ProcessFrame(Object sender, EventArgs e)
         {
 
@@ -73,7 +101,7 @@ namespace FaceMatching
             {
                 using (OpenFileDialog openFD = new OpenFileDialog())
                 {
-                    if(openFD.ShowDialog() == DialogResult.OK)
+                    if (openFD.ShowDialog() == DialogResult.OK)
                     {
                         txtFileName.Text = Path.GetFileName(openFD.FileName);
 
@@ -119,62 +147,41 @@ namespace FaceMatching
                 picFace.Image = image;
                 picSmallFace.Image = Services.FaceDetect.SmallImage;
             }
-
         }
+        #endregion
 
+        #region Asyncs Buttons
         private async void btnExec_Click(object sender, EventArgs e)
         {
             this.btnExec.Enabled = false;
 
-            string pathImage = Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, "Unknown");
+            string pathImage = Services.FaceDetect.SmallImage != null ? Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, "Unknown") : String.Empty;
 
-            var task = Task.Factory.StartNew(() =>
+            if (pathImage != String.Empty)
+            {
+                var task = Task.Factory.StartNew(() =>
                 Services.CallScript.RunScript(pathScriptVerify, pathImage));
-           
-            await task;
 
-            this.btnExec.Enabled = true; 
-            Console.WriteLine(task.Result);
+                await task;
+
+                Console.WriteLine(task.Result);
+            }
+            this.btnExec.Enabled = true;
         }
 
         private async void btnExecEnc_Click(object sender, EventArgs e)
         {
             this.btnExecEnc.Enabled = false;
 
-            string pathImage = Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, "Unknown");
-
             var task = Task.Factory.StartNew(() =>
-                Services.CallScript.RunScript(pathScriptEncoding, pathImage));
+                Services.CallScript.RunScript(pathScriptEncoding, ""));
 
             await task;
 
             this.btnExecEnc.Enabled = true;
             Console.WriteLine(task.Result);
         }
-
- 
-        private void btnSaveDir_Click(object sender, EventArgs e)
-        {
-
-            string[] images = Directory.GetFiles("C:\\Users\\estagio.sst17\\Pictures\\imgs", "*.jpg");
-
-           foreach (string image in images)
-           {
-                var img = new Bitmap(image);
-
-                var nameChoose = image.Split('\\', '_');
-
-                txtFileName.Text = nameChoose[5] + nameChoose[6];
-
-                Bitmap imageChoose = Services.FaceDetect.DetectFaces(
-                    Helpers.ConvertersHelper.BitmapToMat(img));
-
-                picFace.Image = imageChoose;
-                picSmallFace.Image = Services.FaceDetect.SmallImage;
-
-                Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, nameChoose[5]);
-           }         
-        }
+        #endregion
 
         private void picSmallFace_Click(object sender, EventArgs e)
         {

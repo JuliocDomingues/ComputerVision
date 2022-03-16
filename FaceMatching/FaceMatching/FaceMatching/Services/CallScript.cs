@@ -5,6 +5,7 @@ namespace FaceMatching.Services
 {
     public class CallScript
     {
+        #region Call Script
         public static string RunScript(string pathScript, string pathImage)
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -46,8 +47,9 @@ namespace FaceMatching.Services
             return "Runtime of " + name[name.Length - 1] + ": " + time.ToString() + " s";
 
         }
+        #endregion
 
-
+        #region Sets
         private static void SetOutputText(string data)
         {
             Console.WriteLine(data);
@@ -57,5 +59,6 @@ namespace FaceMatching.Services
         {
             Console.WriteLine(data);
         }
+        #endregion
     }
 }

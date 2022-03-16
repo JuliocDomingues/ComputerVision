@@ -16,6 +16,7 @@ def generate_encoding(img_path, model_name='VGG-Face', enforce_detection=False, 
 def open_encodings():
     encoding_dict = dict()
     entries = os.listdir(encodings_path)
+    
     for folder in entries:
         for filename in glob.glob(encodings_path + "\\" + folder + "/*.npy"):
             encoding_dict.setdefault(folder, []).append(np.load(filename))
@@ -47,8 +48,10 @@ def call_result(encoding_dict, source_path):
     for name, encodings in encoding_dict.items():
         distance = 0.0
         dist_weight = 0
+
         for value in encodings:
             tmp = find_euclidean_distance(l2_normalize(source), l2_normalize(value))
+
             if np.float64(tmp) > 0.8:
                 distance += np.float64(tmp)
             elif np.float64(tmp) > 0.5:
@@ -85,7 +88,6 @@ def how_is_it(distances_dict):
 def main():
     call_result(open_encodings(),sys.argv[1])
 
-    
 
 if __name__ == "__main__":
     main()

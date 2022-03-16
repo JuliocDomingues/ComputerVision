@@ -21,10 +21,11 @@ def save_encodings_from_dir(images_list):
         split = image.split('\\')
         folder = split[len(split) - 2]
         name = split[len(split) - 1]
+        name = name.split('.')
 
         True if path.exists(encodings_path + "\\" + folder) else os.makedirs(encodings_path + "\\" + folder)
 
-        np.save(encodings_path + "\\" + folder + "\\" + name + datetime.now().strftime("_%d-%m_%S-%f") + '.npy',
+        np.save(encodings_path + "\\" + folder + "\\" + name[0] + '.npy',
            generate_encoding(image, model_name='Facenet', detector_backend='ssd'))
 
     move_images(images_list)
@@ -60,7 +61,7 @@ def generate_encoding(img_path, model_name='VGG-Face', enforce_detection=False, 
 
 def main():
     save_encodings_from_dir(open_images())
-
+    print("All right!!")
 
 if __name__ == "__main__":
     main()
