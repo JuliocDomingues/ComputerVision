@@ -1,10 +1,7 @@
 ﻿using FaceRecognitionDotNet;
-using DlibDotNet;
-using DlibDotNet.Dnn;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace FaceMatching.Helpers
 {

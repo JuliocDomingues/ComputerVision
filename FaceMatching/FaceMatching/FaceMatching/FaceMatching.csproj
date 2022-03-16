@@ -175,7 +175,6 @@
     <Compile Include="Services\FaceDetect.cs" />
     <Compile Include="Services\MatchFaces.cs" />
     <Compile Include="Services\SaveImages.cs" />
-    <Compile Include="Services\WaitUntil.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

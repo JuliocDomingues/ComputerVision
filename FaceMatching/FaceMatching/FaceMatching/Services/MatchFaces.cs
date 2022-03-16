@@ -9,7 +9,7 @@ namespace FaceMatching.Services
 {
     public class MatchFaces
     {
-
+        #region Math Face
         public static bool MatchFace(Bitmap image)
         {
             string[] folders = Directory.GetDirectories(Form1.pathEncoding, "*", SearchOption.AllDirectories);
@@ -68,6 +68,6 @@ namespace FaceMatching.Services
             }
             return true;
         }
-
+        #endregion
     }
 }

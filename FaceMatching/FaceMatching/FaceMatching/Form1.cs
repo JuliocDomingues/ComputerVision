@@ -12,8 +12,8 @@ namespace FaceMatching
     {
 
         #region Paths
-        private string pathScriptEncoding = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Scripts\EncodingFromDir.py";
-        private string pathScriptVerify = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Scripts\VerifyDistances.py";
+        private readonly string pathScriptEncoding = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Scripts\EncodingFromDir.py";
+        private readonly string pathScriptVerify = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Scripts\VerifyDistances.py";
         #endregion
 
         #region Variables
@@ -185,7 +185,6 @@ namespace FaceMatching
 
         private void picSmallFace_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

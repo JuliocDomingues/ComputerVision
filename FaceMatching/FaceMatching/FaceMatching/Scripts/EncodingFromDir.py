@@ -63,5 +63,6 @@ def main():
     save_encodings_from_dir(open_images())
     print("All right!!")
 
+
 if __name__ == "__main__":
     main()
