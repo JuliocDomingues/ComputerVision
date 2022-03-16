@@ -27,8 +27,7 @@ namespace FaceMatching
 
         #region Getters/Setters
         public static FaceRecognition _FaceRecognition { get; private set; } = FaceRecognition.Create(Path.GetFullPath("models"));
-        public static string path { get; private set; } = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\tmpImages";
-
+        public static string path { get; private set; } = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Results";
         public static string pathEncoding { get; private set; } = Directory.GetCurrentDirectory() + @"\Encodings";
         #endregion
 
@@ -112,7 +111,8 @@ namespace FaceMatching
                             Helpers.ConvertersHelper.BitmapToMat(
                             new Bitmap(openFD.FileName)));
 
-                        Services.MatchFaces.MatchFace(Services.FaceDetect.SmallImage);
+                        var name = txtFileName.Text.Split('_');
+                        Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, name[0]);
                         Console.WriteLine("********************************************************");
 
                     }

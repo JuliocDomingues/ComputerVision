@@ -71,6 +71,7 @@ def call_result(encoding_dict, source_path):
                                                                  distance / (len(encodings) + dist_weight)))
     save_result(how_is_it(distances_dict), source_path)
 
+
 def how_is_it(distances_dict):
     result_name = ""
     result_value = sys.float_info.max

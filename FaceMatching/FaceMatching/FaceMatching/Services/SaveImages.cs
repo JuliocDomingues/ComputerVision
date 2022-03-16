@@ -18,11 +18,7 @@ namespace FaceMatching.Services
             if (!Directory.Exists(Form1.path + @"\" + name))
                 Directory.CreateDirectory(Form1.path + @"\" + name);
 
- 
             image.Save(Form1.path + @"\" + name + nameImg + ".jpg");
-
-            
-
 
             return Form1.path + @"\" + name + nameImg + ".jpg";
             //EncodingImages.EncodingImg(image, name);

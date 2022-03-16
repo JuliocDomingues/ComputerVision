@@ -10,7 +10,7 @@ target_path = "C:\\Users\\estagio.sst17\\Documents\\studycsharp\\ComputerVision\
               "\\FaceMatching\\savedImages\\"
 
 temp_images_path = "C:\\Users\\estagio.sst17\\Documents\\studycsharp\\ComputerVision\\FaceMatching\\FaceMatching" \
-                 "\\FaceMatching\\tmpImages"
+                 "\\FaceMatching\\Results"
 
 encodings_path = "C:\\Users\\estagio.sst17\\Documents\\studycsharp\\ComputerVision\\FaceMatching\\FaceMatching" \
                  "\\FaceMatching\\Encodings"
