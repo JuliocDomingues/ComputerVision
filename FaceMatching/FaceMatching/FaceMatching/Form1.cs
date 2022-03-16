@@ -10,6 +10,12 @@ namespace FaceMatching
 {
     public partial class Form1 : Form
     {
+
+        #region Paths
+        private string pathScriptEncoding = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Script\EncodingFromDir.py";
+        private string pathScriptVerify = @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Script\VerifyDistances.py";
+        #endregion
+
         #region Variables
         private VideoCapture _videoCapture;
         private Mat imageMat = new Mat();
@@ -123,7 +129,7 @@ namespace FaceMatching
             string pathImage = Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, "Unknown");
 
             var task = Task.Factory.StartNew(() =>
-                Services.CallScript.RunScript(pathImage));
+                Services.CallScript.RunScript(pathScriptVerify, pathImage));
            
             await task;
 
@@ -131,11 +137,22 @@ namespace FaceMatching
             Console.WriteLine(task.Result);
         }
 
-        private void picSmallFace_Click(object sender, EventArgs e)
+        private async void btnExecEnc_Click(object sender, EventArgs e)
         {
+            this.btnExecEnc.Enabled = false;
 
+            string pathImage = Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, "Unknown");
+
+            var task = Task.Factory.StartNew(() =>
+                Services.CallScript.RunScript(pathScriptEncoding, pathImage));
+
+            await task;
+
+            this.btnExecEnc.Enabled = true;
+            Console.WriteLine(task.Result);
         }
 
+ 
         private void btnSaveDir_Click(object sender, EventArgs e)
         {
 
@@ -157,6 +174,11 @@ namespace FaceMatching
 
                 Services.SaveImages.SaveImage(Services.FaceDetect.SmallImage, nameChoose[5]);
            }         
+        }
+
+        private void picSmallFace_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

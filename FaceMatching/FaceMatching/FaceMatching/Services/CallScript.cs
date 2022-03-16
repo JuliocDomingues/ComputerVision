@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace FaceMatching.Services
 {
     public class CallScript
     {
-        public static string RunScript(string pathImage)
+        public static string RunScript(string pathScript, string pathImage)
         {
             Stopwatch stopwatch = new Stopwatch();
+
+            var name = pathScript.Split('\\');
 
             stopwatch.Start();
 
@@ -20,7 +19,7 @@ namespace FaceMatching.Services
                 {
                     FileName = @"C:\Users\estagio.sst17\AppData\Local\Programs\Python\Python39\python.exe",
 
-                    Arguments = string.Format("{0} {1}", @"C:\Users\estagio.sst17\Documents\studycsharp\ComputerVision\FaceMatching\FaceMatching\FaceMatching\Script\main.py", pathImage),
+                    Arguments = string.Format("{0} {1}", pathScript, pathImage),
                     UseShellExecute = false,
                     CreateNoWindow = true,
                     RedirectStandardInput = true,
@@ -44,7 +43,7 @@ namespace FaceMatching.Services
             stopwatch.Stop();
             var time = stopwatch.ElapsedMilliseconds / 1000;
 
-            return "Time of execution: " + time.ToString() + " s";
+            return "Runtime of " + name[name.Length - 1] + ": " + time.ToString() + " s";
 
         }
 
